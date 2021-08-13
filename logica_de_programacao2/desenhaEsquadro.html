@@ -1,0 +1,82 @@
+<canvas width="600" height="400"></canvas>
+<script>
+
+    var tela = document.querySelector('canvas');
+    var pincel = tela.getContext('2d');
+
+    function desenhaEsquadro(xa, ya, xc, yc, cor) {
+        pincel.fillStyle = cor
+        pincel.beginPath();
+        pincel.moveTo(xa, ya);
+        pincel.lineTo(xa, yc);
+        pincel.lineTo(xc, yc);
+        pincel.fill();
+
+        pincel.fillStyle = 'white'
+        pincel.beginPath();
+        pincel.moveTo((6*xa + xc)/7, (9*ya + 5*yc)/14);
+        pincel.lineTo((6*xa + xc)/7, (ya + 6*yc)/7);
+        pincel.lineTo((5*xa + 9*xc)/14, (ya + 6*yc)/7);
+        pincel.fill();
+
+}
+
+    desenhaEsquadro(50, 50, 400, 400, 'black');
+
+</script> 
+
+
+
+/* <meta charset="UTF-8">
+<canvas width="700" height="500"></canvas>
+
+<script>
+
+    var tela = document.querySelector('canvas');
+    var pincel = tela.getContext('2d');
+
+    function desenhaTexto(texto, x , y, cor1) {
+
+        var tela = document.querySelector('canvas');
+        var pincel = tela.getContext('2d'); //Nada mais que a quantidade de dimensões que usamos para a escrita, no caso duas dimensões, ou seja 2D
+        pincel.font='20px Georgia'; //Aqui temos o 20px Georgia porque é a fonte que usamos para a escrita.
+        pincel.fillStyle='cor1';
+        pincel.fillText(texto, x, y);
+    }  
+
+    function desenhaEsquadro(xa, ya, xc, yc, cor) {
+
+        pincel.fillStyle = cor //Aqui a cor foi dada quando ativamos a função lá na linha 49, no caso o black(preto)
+        pincel.beginPath();
+        pincel.moveTo(xa, ya); //xa = 50, ya = 50
+        //Ponto inicial será aqui
+        desenhaTexto ("Ponto A", xa, ya, "black");
+
+        pincel.lineTo(xa, yc); //xa = 50, yc = 400
+        //Agora o ponto inicial se move para cá. Virando ponto2
+        desenhaTexto ("Ponto B", xa, yc + 17, "black");
+
+        pincel.lineTo(xc, yc);//xc = 400, yc = 400 
+        //Agora o ponto2 se mové para cá, virando o ponto3. Após isso o sistema fecha o trinagulo sozinho,, por conta do beginPath.
+
+        desenhaTexto ("Ponto C", xc, yc, "black");
+        pincel.fill();
+
+
+        pincel.fillStyle = 'white'
+        pincel.beginPath();
+        pincel.moveTo((6*xa + xc)/7, (9*ya + 5*yc)/14); //(6*xa + xc)/7 = 100, (9*ya + 5*yc)/14) = 175
+        desenhaTexto ("Ponto A", 80, 168, "white");//Note que eu aumentei o valor da escrita em relação ao eixo X e Y, porém fiz isso apenas para encaixar melhor a frase na imagem, caso não tivesse feito isso as letras sumiriam dentro do beginPath(triangulo) e, não deixaria ver a frase.
+
+        pincel.lineTo((6*xa + xc)/7, (ya + 6*yc)/7); //(6*xa + xc)/7 = 100, (ya + 6*yc)/7) = 350
+        desenhaTexto ("Ponto B", 80, 368, "white");//Note que eu aumentei o valor da escrita em relação ao eixo X e Y, porém fiz isso apenas para encaixar melhor a frase na imagem, caso não tivesse feito isso as letras sumiriam dentro do beginPath(triangulo) e, não deixaria ver a frase.
+
+        pincel.lineTo((5*xa + 9*xc)/14, (ya + 6*yc)/7); //(5*xa + 9*xc)/14 = 275, (ya + 6*yc)/7) = 350
+        desenhaTexto ("Ponto C", 260, 368, "white"); //Note que eu aumentei o valor da escrita em relação ao eixo X e Y, porém fiz isso apenas para encaixar melhor a frase na imagem, caso não tivesse feito isso as letras sumiriam dentro do beginPath(triangulo) e, não deixaria ver a frase.
+        pincel.fill();
+    }
+
+    desenhaEsquadro(50, 50, 400, 400, 'black'); //Aqui ativamos a function(função)
+
+/*Espero ter ajudado você caso tenha tida alguma duvida sobre o conteudo da mesma forma que eu tive. Caso tenha duvida sobre o curso, acho legal o uso do recuso do caderno, é bom para anotar e pensar em formas diferentes de rever o conteudo escrevendo. Tenho as minhas, qualquer coisa posso tentar disponibilizar para dar uma olhada C: /*
+</script>*/
